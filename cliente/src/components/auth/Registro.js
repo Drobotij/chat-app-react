@@ -6,7 +6,7 @@ import authImg from '../../chats.png';
 import authContext from '../../context/auth/authContext';
 import mensajeContext from '../../context/mensajes/mensajesContext';
 
-const Registro = () => {
+const Registro = props => {
 
     const {  crearUsuario, respuestaServidor } = useContext(authContext);
     
@@ -33,7 +33,7 @@ const Registro = () => {
             // Redirecciona a iniciar sesion
             setTimeout(() => {
 
-                window.location.href = 'http://localhost:3000/iniciar-sesion';
+                props.history.push('/iniciar-sesion');
                 
             }, 3000);
             

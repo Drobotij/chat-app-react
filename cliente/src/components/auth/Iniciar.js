@@ -119,7 +119,7 @@ const Iniciar = props => {
                     
                     }
                     <div className="seccion-chica">
-                        <p>¿No tienes una cuenta? <Link to="/">Registrarse</Link></p>
+                        <p>¿No tienes una cuenta? <Link to="/registrarse">Registrarse</Link></p>
                     </div>
                 </div>
                 </div>

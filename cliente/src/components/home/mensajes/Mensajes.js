@@ -22,11 +22,16 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
         if(!chatActual) return;
        
         obtenerMensajes(chatActual[0]._id);
-       
+        scrollDown();
 
     }, [chatActual]);
 
     
+    const scrollDown = () => {
+        const contenedor = document.querySelector('.contenedor-mensajes');
+        contenedor.scroll(0, contenedor.scrollHeight);
+    
+    }   
 
     const volver = () =>{
 
@@ -35,7 +40,7 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
             setChatActualNull();
             setOtroUsuario(null);
             mensajesNull();
-            pantalla.scroll(-768, 0);
+            pantalla.classList.toggle('translate');
             
         }
 
@@ -54,6 +59,7 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
         CrearMensaje(chatActual[0]._id, nuevoMensaje);
         socket.emit('nuevo mensaje', _id, chatActual[0]._id);
         setNuevoMensaje('');
+        scrollDown();
        
     }
     
@@ -64,7 +70,7 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
         if(chatActual[0]._id == idChat){
 
             obtenerMensajes(chatActual[0]._id);
-           
+            scrollDown();
         
         }
     
@@ -77,28 +83,28 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
 
             
 
-                <header>
-                    <div className="contenedor">
-                        {
+            <header>
+                <div className="contenedor">
+                    {
 
-                            window.screen.width < 768 ?
-                            (   <button
-                                    type="button"
-                                    className="btn-simple"
-                                    onClick={volver}
-                                >
-                                    <img src={backArrow} alt="back arrow" />
-                                </button>
-                            ) :null
+                        window.screen.width < 768 ?
+                        (   <button
+                                type="button"
+                                className="btn-simple"
+                                onClick={volver}
+                            >
+                                <img src={backArrow} alt="back arrow" />
+                            </button>
+                        ) :null
 
-                        }
-                        
-                        <div>
-                            <img src={foto} alt={nombre} />
-                            <h3>{nombre} {apellido}</h3>
-                        </div>
+                    }
+                    
+                    <div>
+                        <img src={foto} alt={nombre} />
+                        <h3>{nombre} {apellido}</h3>
                     </div>
-                </header>
+                </div>
+            </header>
             <div className="contenedor">
                 <div className="contenedor-mensajes">
                     
@@ -112,7 +118,7 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
                             ))
                         : null
                     }
-
+                    
                 </div>
 
                 <form
@@ -123,6 +129,7 @@ const Mensajes = ({otroUsuario,setOtroUsuario, socket}) => {
                         className="campo-form"
                         name="mensaje"
                         placeholder="Ingrese mensaje aquí.."
+                        autoComplete="off"
                         value={nuevoMensaje}
                         onChange={handleChange}
                     />

@@ -13,7 +13,7 @@ const Home = () => {
     const { chatActual, obtenerDatosOtroUsuario } = useContext(chatsContext);
     const [ otroUsuario, setOtroUsuario ] = useState(null)
     const { usuario } = useContext(authContext);
-    const [ socket, setSocket ] = useState(io("http://localhost:4000/"))
+    const [ socket, setSocket ] = useState(io("https://chat-app-react-jss.herokuapp.com"));
 
     useEffect( async () => {
         

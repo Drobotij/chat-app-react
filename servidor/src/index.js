@@ -10,7 +10,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
 
     cors : {
-        origin: "http://localhost:3000",
+        origin: "https://chat-app-react-cliente.herokuapp.com/",
         methods: ["GET", "POST"]
     }
 
@@ -25,9 +25,9 @@ app.set('port', process.env.PORT || 4000);
 app.use(express.json());
 app.use(express.urlencoded( { extended: true } ));
 app.use(express.static(__dirname + '/source'));
-// Configurando cors
+
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://chat-app-react-cliente.herokuapp.com/',
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));

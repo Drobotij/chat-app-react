@@ -81,8 +81,8 @@ const NuevoChat = () => {
                             
                                 noResult ?
                                 
-                                    (<div>
-                                        <p className="texto-instruccion">No hay resultados</p>
+                                    (<div className="no-resultados">
+                                        <p>No hay resultados</p>
                                     </div>)
 
                                 : 

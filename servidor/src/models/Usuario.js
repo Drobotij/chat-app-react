@@ -31,7 +31,7 @@ const UsuarioSchema = mongoose.Schema({
 UsuarioSchema.pre('save', async function(next) {
 
     try {
-        this.foto = `http://localhost:4000${path.join('/usersImg')}/${this._id}/FotoPerfil.png`;
+        this.foto = `http://localhost:4000/${path.join('/usersImg')}/${this._id}/FotoPerfil.png`;
 
         const salt = await bcrypt.genSalt(10);
        

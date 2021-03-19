@@ -1,22 +1,32 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Chat from './Chat';
 import NuevoChat from './NuevoChat';
 import chatsContext from '../../../context/chats/chatsContext';
 import authContext from '../../../context/auth/authContext';
 import msgIcon from '../../../msg.svg';
 
-const Chats = () => {
+
+const Chats = props => {
 
     const authContextContent = useContext(authContext);
-    const { usuario, cerrarSesion, cambiarFoto } = authContextContent;
+
+    const { servidorNull, usuario, cerrarSesion, cambiarFoto, respuestaServidor } = authContextContent;
     
-    const { chats, obtenerChats, respuestaServidor} = useContext(chatsContext)
+    const { chats, obtenerChats} = useContext(chatsContext);
     
     const { nombre, apellido, foto } = usuario;
 
+    const [verAlerta, setverAlerta] = useState(null);
+
     useEffect(() => {
         
+       
+        if(respuestaServidor) {setverAlerta(respuestaServidor)}else{setverAlerta(null)};
         obtenerChats();
+        
+        setTimeout(() => {
+            servidorNull();
+        }, 3000);
         
     }, [respuestaServidor])
 
@@ -40,12 +50,11 @@ const Chats = () => {
 
         // Cambia la foto
         cambiarFoto(formData);
-        window.location.reload();
+        
     }
 
-    const handleCerrarSesion = ()=> {
+    const handleCerrarSesion = () => {
         cerrarSesion();
-        window.location.reload();
     }
 
   
@@ -55,7 +64,7 @@ const Chats = () => {
             <div className="contenedor">
                 
                 <div className="info-usuario">
-
+                    
                     <div className="foto-perfil-contenedor">
                         <div className="foto-perfil">
                             <img id="fotoPerfil" src={foto} alt={`${nombre} ${apellido}`}/>
@@ -68,7 +77,7 @@ const Chats = () => {
                             />
                             <p className="btn boton-chat">Cambiar foto</p>
                         </div>
-
+                        
                     </div>
                     
                     
@@ -86,6 +95,13 @@ const Chats = () => {
                     </div>
                 </div>
 
+                {verAlerta 
+                    ? 
+                        <div className={verAlerta.tipo}>
+                                <p>{verAlerta.detalles[0].msg}</p>
+                        </div>
+                    :null
+                } 
                 <NuevoChat />
                 {chats
                     ? 

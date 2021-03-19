@@ -22,7 +22,7 @@ const Chat = ({chat}) => {
 
             const pantalla = document.querySelector('.home');
 
-            pantalla.scroll(768, 0);
+            pantalla.classList.toggle('translate');
             
         }
 

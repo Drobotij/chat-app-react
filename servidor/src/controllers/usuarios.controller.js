@@ -49,7 +49,7 @@ exports.crearUsuarios = async (req, res) => {
         
         );
         
-        return res.status(201).json( { detalles: [ { msg: "Usuario creado correctamente" } ], tipo: 'exito' });
+        return res.status(201).json( { detalles: [ { msg: "Usuario creado correctamente." } ], tipo: 'exito' });
 
     } catch (error) {
         console.log(error);
@@ -131,5 +131,5 @@ exports.obtenerUsuario = async (req, res) => {
 
 exports.almacenarFoto = (req, res) => {
    
-    res.status(200).json( { detalles: [ { msg: "Se ha actualizado la foto de perfil correctamente" } ], tipo: 'exito' });
+    res.status(200).json( { detalles: [ { msg: "Foto de perfil actulizada correctamente. Se recomienda recargar la pagina para ver cambios" } ], tipo: 'exito' });
 }

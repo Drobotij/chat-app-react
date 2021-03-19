@@ -1,26 +1,24 @@
 import React, { useContext, useEffect } from 'react';
+import { Route, Redirect} from 'react-router-dom';
 import authContext from '../../context/auth/authContext';
-import Home from '../home/Home';
-import Registro from '../auth/Registro';
 
-const RutaPrivada = props => {
+
+
+const RutaPrivada = ({component: Component, props}) => {
     
-    const { autenticado, obtenerUsuario } = useContext(authContext);
-    
-    useEffect(() => {
+    const { autenticado, obtenerUsuario  } = useContext(authContext);
 
-        if(!autenticado) {
-            obtenerUsuario();
-        }
+    useEffect( () => {
+        obtenerUsuario();
+        // eslint-disable-next-line
+    }, [])
 
-    }, []);
-
-    const Componente = autenticado ? (<Home {...props}/>) : (<Registro {...props} />)
-    
     return ( 
-
-        Componente
- 
+        <Route {...props} render={props => !autenticado ? (
+            <Redirect to="/iniciar-sesion" />
+        ) : (
+            <Component {...props} />
+        )} />
     );
 }
  

@@ -93,10 +93,10 @@ const AuthState = props => {
     }
 
     const cambiarFoto = async foto => {
-        console.log(foto);
+        
         try {
             const respuesta = await clienteAxios.put('/usuarios/cambiarFoto', foto , {headers: {'Content-Type' : 'multipar/form-data'}});
-            console.log(respuesta.data);
+            
 
             dispatch({
                 type: CAMBIAR_FOTO,
@@ -104,10 +104,12 @@ const AuthState = props => {
             })
 
             obtenerUsuario();
+
+
+
         } catch (error) {
             console.log(error.response);
         }
-
 
     }
 
@@ -149,7 +151,8 @@ const AuthState = props => {
                 iniciarSesion,
                 cerrarSesion,
                 obtenerUsuario,
-                cambiarFoto
+                cambiarFoto,
+                servidorNull
             }}
         >
             {props.children}

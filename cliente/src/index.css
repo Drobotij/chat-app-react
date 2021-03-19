@@ -90,6 +90,11 @@ img{
     max-width: 100rem;
   }
 }
+.translate{
+  overflow-x: visible!important;
+  transform: translateX(-100%);
+  
+}
 
 .campo-form {
   display: block;
@@ -128,11 +133,11 @@ textarea.campo-form{
 /* ALERTAS */
 .alerta {
   
-  padding:1.3rem;
+  padding:.5rem;
   text-align: center;
   
   font-size:1.5rem;
-  margin:1rem 0;
+  margin:0;
 }
 .error{
 
@@ -205,6 +210,10 @@ textarea.campo-form{
   color:#b8b8b8;
   font-weight: bold;
 }
+.cambiar-foto-cartel{
+  
+
+}
 /*------------------ HEADER --*/
 .header {
   box-shadow:  4px 4px 8px #1c1c1c,
@@ -213,7 +222,7 @@ textarea.campo-form{
 }
 .header .contenedor {
   display:flex;
-  padding:1rem 0;
+  padding:2.5rem 0;
   align-items: center;
   justify-content: space-between;
 }
@@ -229,7 +238,6 @@ textarea.campo-form{
 /*------------------ HOME --*/
 .home {
   display: flex;
-  overflow: hidden;
   overflow-x: hidden;
 }
 .chats{
@@ -391,6 +399,10 @@ box-shadow: inset -4px -4px 8px #1c1c1c,
   padding:0;
   justify-content: space-evenly;
 }
+.no-resultados p {
+  font-size:1.8rem;
+  color:#bebebe;
+}
 .info-usuario{
   display: flex;
   
@@ -503,7 +515,8 @@ box-shadow: inset -4px -4px 8px #1c1c1c,
 /*------------------ FOOTER --*/
 
 .footer {
-  padding:.5rem;
+
+  padding:1rem;
   box-shadow:  -4px -4px 8px #1c1c1c,
              4px 4px 8px #262626;
              color:#dedede;

@@ -3,7 +3,10 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 // Componentes
 import Iniciar from './components/auth/Iniciar';
+import Registrarse from './components/auth/Registro';
 import RutaPrivada from './components/rutas/RutaPrivada';
+import Home from './components/home/Home';
+
 // Cnfig de headers
 import authToken from './config/tokenAuth'
 
@@ -28,8 +31,8 @@ function App() {
           <MensajeState>
             <Router>
               <Switch>
-                <Route exact path="/" component={RutaPrivada}/>
-                
+                <RutaPrivada exact path="/" component={Home} />
+                <Route exact path="/registrarse" component={Registrarse} />
                 <Route exact path="/iniciar-sesion" component={Iniciar} />
               
               </Switch>
